@@ -3,13 +3,15 @@
 <!-- Esta es la lista de preguntas y el componente del primer radio button -->
 <template>
     <ul id="object" class="demo">
-        <aside class="title">{{pregunta}}</aside>        
-        <li v-for="pregunta in objects" v-bind="objects" class="listOption" :key="pregunta.id">
-            <input class="radio" type="radio" v-model="selectOption" name="option" v-bind:id="pregunta.id">
-            <label v-bind="pregunta">{{ pregunta.question }}</label>
+        <aside class="title">{{ texto }}</aside>
+
+        <li v-for="pregunta in objects" v-bind="objects" class="listOption" @click="isSelected()" :key="pregunta.id">
+            <input :disabled="selectOption==1" class="radio" v-model="selectOption" type="radio" name="option" >
+            <label v-bind="selectOption">{{ pregunta.question }}</label>
         </li>
+
     </ul>
-    </template>
+</template>
 
 <script>
 // import Ofert from './components/Option.vue'
@@ -18,15 +20,38 @@ import ButtonComponent from './ButtonComponent.vue';
 
 export default {
     name: 'FirstQuestion',
+
+    methods: {
+    
+
+        log() {
+            console.log(this.selectOption);
+            console.log(this.selectOption);
+            console.log(this.opcionSelecionada);
+            
+        },
+        isSelected() {
+            this.selectOption=+1
+            console.log(this.selectOption,"seleccionado, is cliked ");
+            return this.selectOption
+        },
+    },
+
+    watchers: {
+      
+     
+
+    },
     data() {
         return {
             elementId: '#object',
-            selectOption:null,
-            checked: false,
+            selectOption: null,
+            // le pongo una propiedad de si esta marcado o no el boton , por defecto esta en falso 
+            // checked: false,
             components: {
                 ButtonComponent
             },
-            pregunta: 'Pregunta 1',
+            texto: 'Pregunta 1',
             objects: [
                 { id: 1, question: 'Opcion 1' },
                 { id: 2, question: 'Opcion 2' },
@@ -53,7 +78,13 @@ export default {
 
 
 }
-.title{
+label {
+
+    background-color: white;
+    color: black;
+}
+
+.title {
     display: flex;
     width: 300px;
     height: 70px;
@@ -70,7 +101,7 @@ export default {
 }
 
 .listOption {
-    background-color: blue;
+    background-color: white;
     display: flex;
     align-items: flex-start;
     font-size: 33px;

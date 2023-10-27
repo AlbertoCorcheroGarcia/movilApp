@@ -25,19 +25,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 <!-- 
-VUE
-    * * Pasar informacion del componente padre(first question) al componente hijo (boton)
+
+    ** Hola my buenas , esta es la prueba que he podido desarrollar en dos dias aprox
+        - Me falta comunicar el componente de selecion de input para que se desabilite, tengo la logica practicamente montada me faltan dos cosillas 
+        - Me falta actualizar la barra dependiendo del input en el que se encuentre
+
+        -Falta la animacion de encogerse el input y la pregunta
    
-    ** Hacer que aparezca el boton una vez se selecione el elemento
+    ** 
     
-    ** Si el boton se muestra que se quite lo de la oferta
-        - comunicacion componete input con el componente de oferta
-        - v-if , debido a que no renderiza el componente 
-
-    ** Barra de progreso de carga 
-        -pasandole props de cada estado
-        - si la barra tiene el primer estado, hasta que no detecte el evento del segundo componente no avanza 
-
-CSS
-    ** Animaciones y transiciones
+    ** 
  -->

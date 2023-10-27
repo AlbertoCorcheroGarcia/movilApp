@@ -1,28 +1,34 @@
+<!-- eslint-disable no-unused-labels -->
 <!-- eslint-disable no-unused-vars -->
 <!-- Este es el componente principal -->
 <template>
   <div id="app">
-    <LoadingComponentVue v-bind="{ counter }" @cchanged="ifChecked = $event"  class="loading" >Progreso</LoadingComponentVue>
-    
+    <LoadingComponentVue v-if="counter == 1" onchange="isCounted()"  v-bind="{ counter }" 
+    class="loading" ></LoadingComponentVue>
+    <LoadingComponentVue v-if="counter == 2" onchange="isCounted()"  v-bind="{ counter }"
+    class="loading2" ></LoadingComponentVue>
+
     <div id="containerOfer">
       <Ofert class="oferta" :msg="'Oferta del mes'" />
-      <Ofert class="descuento" :msg="'50% de descuento'" />
+      <Ofert  class="descuento" :msg="'50% de descuento'" />
     </div>
     <div class="questionComponent">
-      <FirstQuestion class="firstQuestion" :v-props="{ checked: true }" v-if="checked==false"/>
+      <FirstQuestion v-if="selectOption == 0" v-model="inputValue" class="firstQuestion"/>
+      <FirstQuestion v-else v-model="inputValue" class="firstQuestion"/>
+      <ButtonComponent  class="buttonComponent" />
 
-      <ButtonComponent class="buttonComponent"  />
+      <!-- <ButtonComponent v-else :disabled="isDisabled" @click="updateInputValue" class="buttonComponent"/> -->
     </div>
-
     <div class="option" objects="object" >
-    
     </div>
-    <!-- <OptionRadioComponentVue /> -->
+    <OptionRadioComponentVue class="firstQuestion"/>
+    <ButtonComponent  class="buttonComponent" />
+
   </div>
 </template>
 
 <script>
-// import OptionRadioComponentVue from './components/OptionRadioComponent.vue'
+import OptionRadioComponentVue from './components/OptionRadioComponent.vue'
 import LoadingComponentVue from './components/LoadingComponent.vue'
 import Ofert from './components/Ofert.vue'
 import FirstQuestion from './components/FirstQuestion.vue'
@@ -30,31 +36,48 @@ import ButtonComponent from './components/ButtonComponent.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      inputValue:'',
+      counter:1
+      
+    }
+  },
+  methods: {
+    updateInputValue(){
+      return this.inputValue
+    },
+    
+  },
   props: {
     msg: String,
     objects: Array,
     checkBox: Boolean,
     checked: Boolean,
-    counter:Number
+    selectOption:Boolean,
+    selectOption2:Boolean,
+
   },
   components: {
     LoadingComponentVue,
     Ofert,
     FirstQuestion,
     ButtonComponent,
-    // OptionRadioComponentVue,
+    OptionRadioComponentVue,
 
   }
   ,watchers: {
     ifChecked(){
       return this.checked
-    }
+    },
+ 
   
   },
   computed: {
    
     
-  }
+  },
+
 }
 </script>
 
@@ -79,14 +102,20 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 .loading {
-  background-color: red;
+  background-color: white;
   width: 100%;
   height: 100px;
   border-radius: 20px 20px 0 0;
-
+}
+.loading2 {
+  background-color: white;
+  width: 100%;
+  height: 200px;
+  border-radius: 20px 20px 0 0;
 }
 .oferta {
   font-size: 9px;
@@ -105,27 +134,19 @@ export default {
   
 }
 
-.option {
-  background-color: yellow;
-  width: 500px;
-  height: 400px;
-  margin-bottom: 30px;
-  display: flex;
-  border: solid black 3px;
-}
 
 .firstQuestion {
-  background-color: black;
+  background-color: white;
   width: 500px;
   border-radius: 20px;
 }
 .questionComponent{
-  background-color: green;
+  background-color: white;
   
 }
 .buttonComponent {
-background-color: red;
   display: flex;
-
+  justify-content: center;
+  background-color: white;
   }
 </style>

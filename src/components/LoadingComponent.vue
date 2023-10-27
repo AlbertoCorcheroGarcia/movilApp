@@ -1,22 +1,27 @@
 
 <!-- este componente es el del proceso de carga de la app -->
 <template>
-  <!-- <div class="loading">
+  <div class="loading">
     <aside class="aside">
       Progreso:
     </aside>
       <p class="porcent"> </p>
       
-    </div> -->
-    <Progress :value="currentProgress" />
+    </div>
+    <!-- <Progress :value="currentProgress" /> -->
 
   </template>
   
   <script>
   export default {
     name: 'LoadingComponentVue',
+    methods: {
+      loading(){
+        return this.counter
+      }
+    },
     props: {
-      counter:Number, 
+      // counter:Number, 
     }
   }
   </script>
