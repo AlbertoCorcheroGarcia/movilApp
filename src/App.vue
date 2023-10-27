@@ -23,6 +23,7 @@
     </div>
     <OptionRadioComponentVue class="firstQuestion"/>
     <ButtonComponent  class="buttonComponent" />
+    <telephone-component class="telephoneComponent"/>
 
   </div>
 </template>
@@ -33,6 +34,7 @@ import LoadingComponentVue from './components/LoadingComponent.vue'
 import Ofert from './components/Ofert.vue'
 import FirstQuestion from './components/FirstQuestion.vue'
 import ButtonComponent from './components/ButtonComponent.vue'
+import TelephoneComponent from './components/TelephoneComponent.vue'
 
 export default {
   name: 'App',
@@ -64,6 +66,7 @@ export default {
     FirstQuestion,
     ButtonComponent,
     OptionRadioComponentVue,
+    TelephoneComponent
 
   }
   ,watchers: {
@@ -148,5 +151,9 @@ export default {
   display: flex;
   justify-content: center;
   background-color: white;
+  }
+  .telephoneComponent{
+    background-color: white;
+    margin-bottom:50px ;
   }
 </style>
