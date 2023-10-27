@@ -3,7 +3,7 @@
 <!-- Esta es la lista de preguntas y el componente del primer radio button -->
 <template>
   <div class="containerTelephone">
-    <input type="tel" class="telephone" placeholder="Telefono" v-model="inputValue" />
+    <input type="number"  class="telephone" placeholder="Telefono" v-model="inputValue" />
     <button class="buttonTelephone">FINALIZAR</button>
   </div>
 </template>
@@ -56,13 +56,14 @@ export default {
     height: 50px;
     margin-top: 100px;
     border-radius: 40px;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
+    color: white;
 }
 .buttonTelephone{
     width: 10%;
     height: 55px;
-    background-color: rgba(232, 68, 226, 0.863);
+    background-color: rgba(232, 68, 226, 1);
     border-radius: 30px;
     font-size: 15px;
     position: absolute;
